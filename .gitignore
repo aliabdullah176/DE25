@@ -10,6 +10,8 @@
 *.userosscache
 *.sln.docstates
 *.env
+/.venv
+2_docker_sql/ny_taxi_postgres_data
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
