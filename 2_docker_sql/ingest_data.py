@@ -43,6 +43,8 @@ def main(params):
     df_first = next(df_chunked)
     df_first.head(n=0).to_sql(name=table_name, con=engine, if_exists='replace', schema=schema)
 
+    df_chunked = pd.read_csv(url, iterator=True, chunksize=100000)
+
     for chunk in df_chunked:
         t_start = time()
         chunk.tpep_pickup_datetime = pd.to_datetime(chunk.tpep_pickup_datetime)
@@ -52,7 +54,7 @@ def main(params):
 
         print(f'inserted another chunk of shape {chunk.shape}, took %.3f second' % (t_end - t_start))
 
-    sql_query = "SELECT COUNT(*) FROM public.yellow_taxi_data"
+    sql_query = f"""SELECT COUNT(*) FROM {schema}.{table_name}"""
     print(pd.read_sql(sql_query, con=engine))
 
 
