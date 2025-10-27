@@ -27,4 +27,4 @@ python ingest_data.py \
   --table_name=yellow_taxi_trips \
   --url=${URL} \
   --table_name_zones=taxi_zones \
-  --schema=DE25
+  --schema=de25
