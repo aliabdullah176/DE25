@@ -1,0 +1,6 @@
+numpy
+pandas
+apache-airflow-providers-google
+pyarrow
+apache-airflow-task-sdk
+apache-airflow[google]
