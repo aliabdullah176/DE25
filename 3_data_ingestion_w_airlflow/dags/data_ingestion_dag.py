@@ -102,22 +102,15 @@ with DAG(
         task_id="bigquery_external_table_task",
         configuration={
             "query": {
-                "query": f"""
-                #     CREATE OR REPLACE EXTERNAL TABLE `{PROJECT_ID}.{BIGQUERY_DATASET}.external_table`
-                #     OPTIONS (
-                #         format = 'PARQUET',
-                #         uris = ['gs://{BUCKET}/raw/{parquet_file}']
-                #     );
-                # """,
                 "query": f""" 
-                    LOAD DATA OVERWRITE {PROJECT_ID}.{BIGQUERY_DATASET}.external_table
+                    LOAD DATA OVERWRITE {PROJECT_ID}.{BIGQUERY_DATASET}.data_ingestion_dag_test_table
                     FROM FILES (
                     format = 'PARQUET',
                     uris = ['gs://{BUCKET}/raw/{parquet_file}']
                     );
                 """,
                 "useLegacySql": False,
-            }
+            },
         },
         location='US',  # Change to your dataset location if different (e.g., 'EU', 'us-central1')
     )
