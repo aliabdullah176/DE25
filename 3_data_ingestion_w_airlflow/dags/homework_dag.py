@@ -58,7 +58,7 @@ default_args = {
 def create_delete_file_bash_operator(path:str, task_id:str):
     return BashOperator(
             task_id=task_id,
-            bash_command=f"rm -rf {path}"        
+            bash_command=f"rm -rf {path} || true"
         )
 
 # one thing from the course is that dag can actually be passed as a parameter to a function
@@ -109,11 +109,11 @@ TRIPS_DATA_GCS_PATH = "trip-data/yellow_tripdata_{{ logical_date.strftime('%Y-%m
 yellow_taxi_DAG = DAG(
     dag_id="yellow_taxi_data",
     schedule="@monthly",
-    start_date=datetime(2018, 12, 31),
-    end_date=datetime(2020, 12, 31),
+    start_date=datetime(2023, 12, 31),
+    end_date=datetime(2024, 6, 30),
     default_args=default_args,
     catchup=True,
-    max_active_runs=3,
+    max_active_runs=6,
     tags=['dtc-de'],
 )
 
