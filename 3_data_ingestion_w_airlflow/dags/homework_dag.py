@@ -65,9 +65,9 @@ FHV_TAXI_SCHEMA = pa.schema([
     ('dispatching_base_num', pa.string()),
     ('pickup_datetime', pa.timestamp('us')),
     ('dropOff_datetime', pa.timestamp('us')),
-    ('PULocationID', pa.float64()),
-    ('DOLocationID', pa.float64()),
-    ('SR_Flag', pa.float64()),
+    ('PUlocationID', pa.int64()),
+    ('DOlocationID', pa.int64()),
+    ('SR_Flag', pa.int64()),
     ('Affiliated_base_number', pa.string()),
 ])
 	
@@ -212,7 +212,7 @@ yellow_taxi_DAG = DAG(
     start_date=datetime(2018, 12, 31),
     end_date=datetime(2020, 12, 31),
     default_args=default_args,
-    catchup=True,
+    catchup=False,
     max_active_runs=6,
     tags=['dtc-de'],
 )
