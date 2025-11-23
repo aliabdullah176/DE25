@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: core
+    database: de25-475501
+    schema: de25
+    tables:
+      - name: dim_zones

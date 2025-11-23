@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: de25-475501
+    schema: de25
+    tables:
+      - name: ny_green_taxi
+      - name: ny_yellow_taxi
+      - name: ny_fhv_taxi
