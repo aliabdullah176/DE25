@@ -6,3 +6,17 @@ sources:
     schema: de25
     tables:
       - name: dim_zones
+        description: "dim table for taxi zones"
+        columns:
+          - name: locationid
+            data_type: integer
+            description: "unique id for location. Unknown locations also have an id"
+          - name: borough
+            data_type: text
+            description: "nyc borough"
+          - name: zone
+            data_type: text
+            description: "zone within the borough"
+          - name: service_zone
+            data_type: text
+            description: "service zone"
